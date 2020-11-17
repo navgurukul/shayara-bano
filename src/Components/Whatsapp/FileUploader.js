@@ -23,7 +23,7 @@ export default class FilesUploadComponent extends Component {
       formData.append("waImgCollection", this.state.imgCollection[key]);
     }
     axios
-      .post("http://localhost:9000/whatsapp/upload", formData, {})
+      .post("/whatsapp/upload", formData, {})
       .then((res) => {
         if (res.status === 200) {
           this.setState({

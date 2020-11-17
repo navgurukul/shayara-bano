@@ -79,7 +79,7 @@ export default function Email() {
   const clearUploads = () => {
     console.log("Will be cleared");
     axios
-      .get("http://localhost:9000/clearUploads")
+      .get("/clearUploads")
       .then((res) => {
         console.log(res);
       })
@@ -89,7 +89,7 @@ export default function Email() {
   };
 
   const contactsAdder = () => {
-    axios.post("http://localhost:9000/whatsapp/addContacts").then((res) => {
+    axios.post("/whatsapp/addContacts").then((res) => {
       console.log(res.status);
     });
   };
@@ -97,7 +97,7 @@ export default function Email() {
   const submitHandler = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:9000/whatsapp/sendMessage", values)
+      .post("/whatsapp/sendMessage", values)
       .then((res) => {
         console.log(res);
       })
