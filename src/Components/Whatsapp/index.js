@@ -5,13 +5,14 @@ import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
+import Paper from "@material-ui/core/Paper";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import Typography from "@material-ui/core/Typography";
 import axios from "axios";
-// import FileUploader from "./FileUploader";
+import FileUploader from "./FileUploader";
 
 import {
   makeStyles,
@@ -68,10 +69,7 @@ export default function Email() {
   const classes = useStyles();
 
   const [values, setValues] = useState({
-    email: "",
-    password: "",
-    mailBody: "",
-    mailSubject: "",
+    message: "",
   });
 
   const changeHandler = (e) => {
@@ -90,10 +88,16 @@ export default function Email() {
       });
   };
 
+  const contactsAdder = () => {
+    axios.post("http://localhost:9000/whatsapp/addContacts").then((res) => {
+      console.log(res.status);
+    });
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:9000/sendEmail", values)
+      .post("http://localhost:9000/whatsapp/sendMessage", values)
       .then((res) => {
         console.log(res);
       })
@@ -107,22 +111,57 @@ export default function Email() {
       <Container component="main" maxWidth="md">
         <CssBaseline />
         <div className={classes.paper}>
-          {/* <Grid container spacing={2}> */}
           <Avatar className={classes.avatar}>
             <MailOutlineIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Write a whatsapp message!
           </Typography>
-          {/* </Grid> */}
+          <br />
+
+          <Grid container spacing={2}>
+            <Grid item xs={4} sm={4}>
+              <Paper variant="elevation" elevation={24}>
+                <Typography align="center" variant="button">
+                  Upload contacts CSV file:{" "}
+                </Typography>
+              </Paper>
+            </Grid>
+            <Grid item xs={4} sm={4}>
+              <FileUploader fileType=".csv" />
+            </Grid>
+            <Grid item xs={4} sm={3}>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                onClick={contactsAdder}
+              >
+                Add Contacts
+              </Button>
+            </Grid>
+
+            <Grid item xs={6} sm={6}>
+              <Paper variant="elevation" elevation={24}>
+                <Typography align="center" variant="button">
+                  Upload Attachments:{" "}
+                </Typography>
+              </Paper>
+            </Grid>
+            <Grid item xs={6} sm={6}>
+              <FileUploader fileType="image/*, application/pdf" />
+            </Grid>
+          </Grid>
 
           <form className={classes.form} noValidate>
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
                   id="outlined-multiline-static"
-                  label="Email"
-                  name="mailBody"
+                  label="Message"
+                  name="message"
                   fullWidth
                   required
                   multiline
@@ -144,29 +183,6 @@ export default function Email() {
             </Button>
           </form>
 
-          {/* <Grid container spacing={2}>
-            <Grid item xs={6} sm={3}>
-              <Paper variant="elevation" elevation={24}>
-                <Typography align="center" variant="button">
-                  Upload Attachments:{" "}
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <FileUploader fileType="image/*, application/pdf" />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <Paper variant="elevation" elevation={24}>
-                <Typography align="center" variant="button">
-                  Upload contacts CSV file:{" "}
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <FileUploader fileType=".csv" />
-            </Grid>
-          </Grid>
-
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <Button
@@ -180,8 +196,8 @@ export default function Email() {
                   Clear all uploads
                 </Typography>{" "}
               </Button>
-            </Grid> */}
-          {/* </Grid> */}
+            </Grid>
+          </Grid>
         </div>
         <Box mt={5}>
           <Copyright />

@@ -108,7 +108,6 @@ export default function Email() {
       <Container component="main" maxWidth="md">
         <CssBaseline />
         <div className={classes.paper}>
-          {/* <Grid container spacing={2}> */}
           <Avatar className={classes.avatar}>
             <MailOutlineIcon />
           </Avatar>
@@ -128,11 +127,35 @@ export default function Email() {
             </Link>{" "}
             to turn on Less Secure Apps
           </Typography>
-          <Typography component="h1" variant="h5">
+          <Typography
+            style={{ marginBottom: "30px" }}
+            component="h1"
+            variant="h5"
+          >
             Write an email!
           </Typography>
-          {/* </Grid> */}
-
+          <Grid container spacing={2}>
+            <Grid item xs={6} sm={3}>
+              <Paper variant="elevation" elevation={24}>
+                <Typography align="center" variant="button">
+                  Upload Attachments:{" "}
+                </Typography>
+              </Paper>
+            </Grid>
+            <Grid item xs={6} sm={3}>
+              <FileUploader fileType="image/*, application/pdf" />
+            </Grid>
+            <Grid item xs={6} sm={3}>
+              <Paper variant="elevation" elevation={24}>
+                <Typography align="center" variant="button">
+                  Upload contacts CSV file:{" "}
+                </Typography>
+              </Paper>
+            </Grid>
+            <Grid item xs={6} sm={3}>
+              <FileUploader fileType=".csv" />
+            </Grid>
+          </Grid>
           <form className={classes.form} noValidate>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
@@ -197,29 +220,6 @@ export default function Email() {
               Send
             </Button>
           </form>
-
-          <Grid container spacing={2}>
-            <Grid item xs={6} sm={3}>
-              <Paper variant="elevation" elevation={24}>
-                <Typography align="center" variant="button">
-                  Upload Attachments:{" "}
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <FileUploader fileType="image/*, application/pdf" />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <Paper variant="elevation" elevation={24}>
-                <Typography align="center" variant="button">
-                  Upload contacts CSV file:{" "}
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <FileUploader fileType=".csv" />
-            </Grid>
-          </Grid>
 
           <Grid container spacing={2}>
             <Grid item xs={12}>

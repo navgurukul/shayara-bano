@@ -20,10 +20,10 @@ export default class FilesUploadComponent extends Component {
     e.preventDefault();
     var formData = new FormData();
     for (const key of Object.keys(this.state.imgCollection)) {
-      formData.append("imgCollection", this.state.imgCollection[key]);
+      formData.append("waImgCollection", this.state.imgCollection[key]);
     }
     axios
-      .post("http://localhost:9000/upload", formData, {})
+      .post("http://localhost:9000/whatsapp/upload", formData, {})
       .then((res) => {
         if (res.status === 200) {
           this.setState({
