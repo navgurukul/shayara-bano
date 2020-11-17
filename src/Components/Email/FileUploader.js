@@ -23,7 +23,7 @@ export default class FilesUploadComponent extends Component {
       formData.append("imgCollection", this.state.imgCollection[key]);
     }
     axios
-      .post("/upload", formData, {})
+      .post("/api/upload", formData, {})
       .then((res) => {
         if (res.status === 200) {
           this.setState({

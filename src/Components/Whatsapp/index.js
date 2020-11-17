@@ -89,7 +89,7 @@ export default function Email() {
   };
 
   const contactsAdder = () => {
-    axios.post("/whatsapp/addContacts").then((res) => {
+    axios.post("/api/whatsapp/addContacts").then((res) => {
       console.log(res.status);
     });
   };
@@ -97,7 +97,7 @@ export default function Email() {
   const submitHandler = (e) => {
     e.preventDefault();
     axios
-      .post("/whatsapp/sendMessage", values)
+      .post("/api/whatsapp/sendMessage", values)
       .then((res) => {
         console.log(res);
       })
