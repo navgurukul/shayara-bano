@@ -74,6 +74,10 @@ export default function Whatsapp() {
     showQR: false,
   });
 
+  const backdropClosed = () => {
+    setValues({ ...values, showQR: false });
+  };
+
   const changeHandler = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
@@ -108,10 +112,6 @@ export default function Whatsapp() {
         console.log(err);
       });
   };
-
-  setTimeout(() => {
-    setValues({ ...values, showQR: false });
-  }, 15000);
 
   return (
     <ThemeProvider theme={theme}>
@@ -189,7 +189,9 @@ export default function Whatsapp() {
               Send
             </Button>
           </form>
-          {values.showQR ? <QrCode /> : null}
+          {values.showQR ? (
+            <QrCode clicked={backdropClosed} isOpen={values.showQR} />
+          ) : null}
 
           <Grid container spacing={2}>
             <Grid item xs={12}>

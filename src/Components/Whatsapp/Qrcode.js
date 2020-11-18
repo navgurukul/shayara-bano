@@ -9,10 +9,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const QrCode = () => {
+const QrCode = (props) => {
   const classes = useStyles();
   return (
-    <Backdrop className={classes.backdrop} open={true}>
+    <Backdrop
+      className={classes.backdrop}
+      open={props.isOpen}
+      onClick={props.clicked}
+    >
       <img src="https://qrcode.merakilearn.org/qr.png" alt="QR Code" />
     </Backdrop>
   );
