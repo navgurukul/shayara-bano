@@ -17,7 +17,7 @@ const QrCode = (props) => {
     <Backdrop
       className={classes.backdrop}
       open={props.isOpen}
-      onClick={props.onClick}
+      onClick={props.clicked}
     >
       <img src={QR} alt="QR Code" />
       {/* <img src="https://qrcode.merakilearn.org/qr.png" alt="QR Code" /> */}
