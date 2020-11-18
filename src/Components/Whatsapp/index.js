@@ -75,10 +75,6 @@ export default function Whatsapp() {
     showQR: false,
   });
 
-  const backdropClosed = () => {
-    setValues({ ...values, showQR: false });
-  };
-
   const changeHandler = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
