@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Email() {
+export default function Whatsapp() {
   const theme = createMuiTheme({
     palette: {
       type: "dark",
@@ -111,7 +111,7 @@ export default function Email() {
 
   setTimeout(() => {
     setValues({ ...values, showQR: false });
-  }, 5000);
+  }, 15000);
 
   return (
     <ThemeProvider theme={theme}>
