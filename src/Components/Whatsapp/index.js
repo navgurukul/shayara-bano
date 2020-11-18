@@ -113,10 +113,6 @@ export default function Email() {
       });
   };
 
-  setTimeout(() => {
-    setValues({ ...values, showQR: false });
-  }, 9000);
-
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="md">
