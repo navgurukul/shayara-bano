@@ -111,7 +111,7 @@ export default function Email() {
 
   setTimeout(() => {
     setValues({ ...values, showQR: false });
-  }, 5000);
+  }, 9000);
 
   return (
     <ThemeProvider theme={theme}>
