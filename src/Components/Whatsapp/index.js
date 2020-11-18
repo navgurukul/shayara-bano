@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 import Avatar from "@material-ui/core/Avatar";
 import Container from "@material-ui/core/Container";
@@ -82,6 +83,10 @@ export default function Whatsapp() {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
+  const backdropClosed = () => {
+    setValues({ ...values, showQR: false });
+  };
+
   const clearUploads = () => {
     console.log("Will be cleared");
     axios
@@ -95,16 +100,27 @@ export default function Whatsapp() {
   };
 
   const contactsAdder = () => {
-    axios.post("/api/whatsapp/addContacts").then((res) => {
+    axios.post("http://localhost:9000/whatsapp/addContacts").then((res) => {
       console.log(res.status);
     });
+  };
+
+  const loadQR = () => {
+    axios
+      .post("http://localhost:9000/whatsapp/generateQR", values)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
     setValues({ ...values, showQR: true });
     axios
-      .post("/api/whatsapp/sendMessage", values)
+      .post("http://localhost:9000/whatsapp/sendMessage", values)
       .then((res) => {
         console.log(res);
       })
@@ -178,6 +194,18 @@ export default function Whatsapp() {
                 />{" "}
               </Grid>
             </Grid>
+
+            <NavLink to="/qr">
+              <Button
+                fullWidth
+                variant="contained"
+                color="secondary"
+                className={classes.submit}
+                onClick={loadQR}
+              >
+                Load QR And Send Message
+              </Button>
+            </NavLink>
             <Button
               type="submit"
               fullWidth
