@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, Switch, withRouter, Redirect } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import Header from "./Components/Navigation";
 import Email from "./Components/Email";
 import Whatsapp from "./Components/Whatsapp";

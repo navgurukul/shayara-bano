@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Email() {
+export default function Whatsapp() {
   const theme = createMuiTheme({
     palette: {
       type: "dark",
@@ -75,6 +75,10 @@ export default function Email() {
     showQR: false,
   });
 
+  const backdropClosed = () => {
+    setValues({ ...values, showQR: false });
+  };
+
   const changeHandler = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
@@ -86,7 +90,7 @@ export default function Email() {
   const clearUploads = () => {
     console.log("Will be cleared");
     axios
-      .get("/clearUploads")
+      .get("/api/clearUploads")
       .then((res) => {
         console.log(res);
       })

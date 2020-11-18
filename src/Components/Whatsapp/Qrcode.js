@@ -2,7 +2,6 @@ import React from "react";
 import Backdrop from "@material-ui/core/Backdrop";
 import { makeStyles } from "@material-ui/core/styles";
 import styles from "./qrcode.module.css";
-import QR from "/home/saquib/Desktop/Projects/NG/email-be/qrcode/qr.png";
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {
@@ -19,8 +18,11 @@ const QrCode = (props) => {
       open={props.isOpen}
       onClick={props.clicked}
     >
-      <img src={QR} alt="QR Code" className={styles.img} />
-      {/* <img src="https://qrcode.merakilearn.org/qr.png" alt="QR Code" /> */}
+      <img
+        className={styles.img}
+        src="https://qrcode.merakilearn.org/qr.png"
+        alt="QR Code"
+      />
     </Backdrop>
   );
 };
