@@ -15,7 +15,7 @@ const QrCode = () => {
   return (
     <Backdrop className={classes.backdrop} open={true}>
       <img src={QR} alt="QR Code" />
-      <img src="https://qrcode.merakilearn.org/qr.png" alt="QR Code" />
+      {/* <img src="https://qrcode.merakilearn.org/qr.png" alt="QR Code" /> */}
     </Backdrop>
   );
 };
