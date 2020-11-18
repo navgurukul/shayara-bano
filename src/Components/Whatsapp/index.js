@@ -96,14 +96,14 @@ export default function Whatsapp() {
   };
 
   const contactsAdder = () => {
-    axios.post("http://localhost:9000/whatsapp/addContacts").then((res) => {
+    axios.post("/api/whatsapp/addContacts").then((res) => {
       console.log(res.status);
     });
   };
 
   const loadQR = () => {
     axios
-      .post("http://localhost:9000/whatsapp/generateQR", values)
+      .post("/api/whatsapp/generateQR", values)
       .then((res) => {
         console.log(res);
       })
@@ -116,7 +116,7 @@ export default function Whatsapp() {
     e.preventDefault();
     setValues({ ...values, showQR: true });
     axios
-      .post("http://localhost:9000/whatsapp/sendMessage", values)
+      .post("/api/whatsapp/sendMessage", values)
       .then((res) => {
         console.log(res);
       })
