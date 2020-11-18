@@ -78,6 +78,10 @@ export default function Email() {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
+  const backdropClosed = () => {
+    setValues({ ...values, showQR: false });
+  };
+
   const clearUploads = () => {
     console.log("Will be cleared");
     axios
@@ -189,7 +193,9 @@ export default function Email() {
               Send
             </Button>
           </form>
-          {values.showQR ? <QrCode /> : null}
+          {values.showQR ? (
+            <QrCode clicked={backdropClosed} isOpen={values.showQR} />
+          ) : null}
 
           <Grid container spacing={2}>
             <Grid item xs={12}>
