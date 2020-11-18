@@ -10,6 +10,7 @@ function App() {
   return (
     <div>
       <Header />
+      <Redirect path="/" to="/email" />
       <Route path="/email" component={Email} />
       <Route path="/whatsapp" component={Whatsapp} />
     </div>

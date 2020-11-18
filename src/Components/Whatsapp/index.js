@@ -13,6 +13,7 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import Typography from "@material-ui/core/Typography";
 import axios from "axios";
 import FileUploader from "./FileUploader";
+import QrCode from "./Qrcode";
 
 import {
   makeStyles,
@@ -70,6 +71,7 @@ export default function Email() {
 
   const [values, setValues] = useState({
     message: "",
+    showQR: false,
   });
 
   const changeHandler = (e) => {
@@ -89,15 +91,16 @@ export default function Email() {
   };
 
   const contactsAdder = () => {
-    axios.post("/api/whatsapp/addContacts").then((res) => {
+    axios.post("http://localhost:9000/whatsapp/addContacts").then((res) => {
       console.log(res.status);
     });
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
+    setValues({ ...values, showQR: true });
     axios
-      .post("/api/whatsapp/sendMessage", values)
+      .post("http://localhost:9000/whatsapp/sendMessage", values)
       .then((res) => {
         console.log(res);
       })
@@ -105,6 +108,10 @@ export default function Email() {
         console.log(err);
       });
   };
+
+  setTimeout(() => {
+    setValues({ ...values, showQR: false });
+  }, 5000);
 
   return (
     <ThemeProvider theme={theme}>
@@ -182,6 +189,7 @@ export default function Email() {
               Send
             </Button>
           </form>
+          {values.showQR ? <QrCode /> : null}
 
           <Grid container spacing={2}>
             <Grid item xs={12}>
