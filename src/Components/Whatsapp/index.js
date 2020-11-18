@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 import Avatar from "@material-ui/core/Avatar";
 import Container from "@material-ui/core/Container";
@@ -100,6 +101,17 @@ export default function Email() {
     });
   };
 
+  const loadQR = () => {
+    axios
+      .post("http://localhost:9000/whatsapp/generateQR", values)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
     setValues({ ...values, showQR: true });
@@ -178,6 +190,18 @@ export default function Email() {
                 />{" "}
               </Grid>
             </Grid>
+
+            <NavLink to="/qr">
+              <Button
+                fullWidth
+                variant="contained"
+                color="secondary"
+                className={classes.submit}
+                onClick={loadQR}
+              >
+                Load QR And Send Message
+              </Button>
+            </NavLink>
             <Button
               type="submit"
               fullWidth
