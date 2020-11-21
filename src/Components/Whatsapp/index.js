@@ -104,7 +104,7 @@ export default function Whatsapp() {
 
   const loadQR = () => {
     axios
-      .post("/api/whatsapp/generateQR", values)
+      .post("api/whatsapp/generateQR", values)
       .then((res) => {
         console.log(res);
         setValues({ ...values, showQR: true, base64QR: res.data });
