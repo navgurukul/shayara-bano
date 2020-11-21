@@ -87,7 +87,7 @@ export default function Whatsapp() {
   const clearUploads = () => {
     console.log("Will be cleared");
     axios
-      .get("/api/clearUploads")
+      .get("http://localhost:9000/clearUploads")
       .then((res) => {
         console.log(res);
       })
@@ -97,14 +97,14 @@ export default function Whatsapp() {
   };
 
   const contactsAdder = () => {
-    axios.post("/api/whatsapp/addContacts").then((res) => {
+    axios.post("http://localhost:9000/whatsapp/addContacts").then((res) => {
       console.log(res.status);
     });
   };
 
   const loadQR = () => {
     axios
-      .post("/api/whatsapp/generateQR", values)
+      .post("http://localhost:9000/whatsapp/generateQR", values)
       .then((res) => {
         console.log(res);
         setValues({ ...values, showQR: true, base64QR: res.data });
@@ -118,7 +118,7 @@ export default function Whatsapp() {
   const submitHandler = (e) => {
     e.preventDefault();
     axios
-      .post("/api/whatsapp/sendMessage", values)
+      .post("http://localhost:9000/whatsapp/sendMessage", values)
       .then((res) => {
         console.log(res);
       })

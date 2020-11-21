@@ -82,7 +82,7 @@ export default function Email() {
   const clearUploads = () => {
     console.log("Will be cleared");
     axios
-      .get("/api/clearUploads")
+      .get("http://localhost:9000/clearUploads")
       .then((res) => {
         console.log(res);
       })
@@ -94,7 +94,7 @@ export default function Email() {
   const submitHandler = (e) => {
     e.preventDefault();
     axios
-      .post("/api/sendEmail", values)
+      .post("http://localhost:9000/sendEmail", values)
       .then((res) => {
         console.log(res);
       })
