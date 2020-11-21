@@ -72,6 +72,7 @@ export default function Whatsapp() {
 
   const [values, setValues] = useState({
     message: "",
+    base64QR: "",
     showQR: false,
   });
 
@@ -106,6 +107,8 @@ export default function Whatsapp() {
       .post("/api/whatsapp/generateQR", values)
       .then((res) => {
         console.log(res);
+        setValues({ ...values, showQR: true, base64QR: res.data });
+        console.log(values);
       })
       .catch((err) => {
         console.log(err);
@@ -114,7 +117,6 @@ export default function Whatsapp() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setValues({ ...values, showQR: true });
     axios
       .post("/api/whatsapp/sendMessage", values)
       .then((res) => {
@@ -191,17 +193,17 @@ export default function Whatsapp() {
               </Grid>
             </Grid>
 
-            <NavLink to="/qr">
-              <Button
-                fullWidth
-                variant="contained"
-                color="secondary"
-                className={classes.submit}
-                onClick={loadQR}
-              >
-                Load QR And Send Message
-              </Button>
-            </NavLink>
+            {/* <NavLink to="/qr"> */}
+            <Button
+              fullWidth
+              variant="contained"
+              color="secondary"
+              className={classes.submit}
+              onClick={loadQR}
+            >
+              Load QR And Send Message
+            </Button>
+            {/* </NavLink> */}
             <Button
               type="submit"
               fullWidth
@@ -214,7 +216,11 @@ export default function Whatsapp() {
             </Button>
           </form>
           {values.showQR ? (
-            <QrCode clicked={backdropClosed} isOpen={values.showQR} />
+            <QrCode
+              clicked={backdropClosed}
+              isOpen={values.showQR}
+              base64={values.base64QR}
+            />
           ) : null}
 
           <Grid container spacing={2}>
