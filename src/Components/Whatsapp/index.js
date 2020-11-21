@@ -97,14 +97,14 @@ export default function Whatsapp() {
   };
 
   const contactsAdder = () => {
-    axios.post("http://localhost:9000/whatsapp/addContacts").then((res) => {
+    axios.post("/api/whatsapp/addContacts").then((res) => {
       console.log(res.status);
     });
   };
 
-  const loadQR = async () => {
-    await axios
-      .post("http://localhost:9000/whatsapp/generateQR", values)
+  const loadQR = () => {
+    axios
+      .post("/api/whatsapp/generateQR", values)
       .then((res) => {
         console.log(res);
         setValues({ ...values, showQR: true, base64QR: res.data });
@@ -118,7 +118,7 @@ export default function Whatsapp() {
   const submitHandler = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:9000/whatsapp/sendMessage", values)
+      .post("/api/whatsapp/sendMessage", values)
       .then((res) => {
         console.log(res);
       })
