@@ -36,6 +36,11 @@ function Header() {
                 Whatsapp
               </Typography>
             </NavLink>
+            <NavLink to="/admission">
+              <Typography variant="button" style={{ padding: "10px" }}>
+                Admission
+              </Typography>
+            </NavLink>
           </Toolbar>
         </AppBar>
       </React.Fragment>
