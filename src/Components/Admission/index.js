@@ -100,11 +100,11 @@ export default function Admission() {
   const submitHandler = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:9000/offerLetter/generateCertificate", values)
+      .post("api/offerLetter/generateCertificate", values)
       .then((res) => {
         console.log(res);
         axios
-          .post("http://localhost:9000/offerLetter/sendEmail", values)
+          .post("api/offerLetter/sendEmail", values)
           .then((res) => {
             console.log(res);
           })
