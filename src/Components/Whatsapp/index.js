@@ -100,7 +100,7 @@ export default function Whatsapp() {
     axios
       .get("/api/whatsapp/downloadSample")
       .then((res) => {
-        console.log(res);
+        window.open("/api/whatsapp/downloadSample");
       })
       .catch((err) => {
         console.log(err);

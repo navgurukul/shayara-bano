@@ -95,7 +95,7 @@ export default function Email() {
     axios
       .get("/api/downloadSample")
       .then((res) => {
-        console.log(res);
+        window.open("/api/downloadSample");
       })
       .catch((err) => {
         console.log(err);
