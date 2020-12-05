@@ -91,6 +91,17 @@ export default function Email() {
       });
   };
 
+  const downloadSample = () => {
+    axios
+      .get("/api/downloadSample")
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
     axios
@@ -149,6 +160,17 @@ export default function Email() {
               <Paper variant="elevation" elevation={24}>
                 <Typography align="center" variant="button">
                   Upload contacts CSV file:{" "}
+                  <Button
+                    style={{
+                      textDecoration: "none",
+                      fontWeight: 700,
+                      backgroundColor: "#ef9a9a33",
+                    }}
+                    onClick={downloadSample}
+                  >
+                    Click Here
+                  </Button>{" "}
+                  to download sample csv file
                 </Typography>
               </Paper>
             </Grid>
@@ -180,6 +202,17 @@ export default function Email() {
                   type="password"
                   id="password"
                   autoComplete="current-password"
+                  onChange={changeHandler}
+                />
+              </Grid>
+              <Grid item xs={12} sm={12}>
+                <TextField
+                  variant="outlined"
+                  fullWidth
+                  label="CC"
+                  placeholder="Comma separated emails (xyz@gmail.com, abc@gmail.com)"
+                  name="cc"
+                  autoComplete="off"
                   onChange={changeHandler}
                 />
               </Grid>

@@ -76,6 +76,7 @@ export default function Admission() {
     senderPassword: "",
     campus: "",
     name: "",
+    cc: "",
     receiverEmail: "",
     date: "",
     langType: "",
@@ -239,6 +240,17 @@ export default function Admission() {
                   fullWidth
                   label="Receiver's Name"
                   name="name"
+                  autoComplete="off"
+                  onChange={changeHandler}
+                />
+              </Grid>
+              <Grid item xs={12} sm={12}>
+                <TextField
+                  variant="outlined"
+                  fullWidth
+                  label="CC"
+                  placeholder="Comma separated emails (xyz@gmail.com, abc@gmail.com)"
+                  name="cc"
                   autoComplete="off"
                   onChange={changeHandler}
                 />
