@@ -96,6 +96,17 @@ export default function Whatsapp() {
       });
   };
 
+  const downloadSample = () => {
+    axios
+      .get("/api/whatsapp/downloadSample")
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const contactsAdder = () => {
     axios.post("/api/whatsapp/addContacts").then((res) => {
       console.log(res.status);
@@ -145,6 +156,17 @@ export default function Whatsapp() {
               <Paper variant="elevation" elevation={24}>
                 <Typography align="center" variant="button">
                   Upload contacts CSV file:{" "}
+                  <Button
+                    style={{
+                      textDecoration: "none",
+                      fontWeight: 700,
+                      backgroundColor: "#ef9a9a33",
+                    }}
+                    onClick={downloadSample}
+                  >
+                    Click Here
+                  </Button>{" "}
+                  to download sample csv file
                 </Typography>
               </Paper>
             </Grid>
