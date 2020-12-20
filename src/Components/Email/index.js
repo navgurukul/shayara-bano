@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import Avatar from "@material-ui/core/Avatar";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
@@ -10,6 +9,7 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import Typography from "@material-ui/core/Typography";
+import Card from "@material-ui/core/Card";
 import Paper from "@material-ui/core/Paper";
 import axios from "axios";
 import FileUploader from "./FileUploader";
@@ -40,9 +40,19 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
   },
+
+  csvFileText: {
+    backgroundColor: "slategrey",
+  },
+
+  attachmentsText: {
+    backgroundColor: "slategrey",
+  },
+
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
+    marginTop: "60px",
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -145,20 +155,22 @@ export default function Email() {
           >
             Write an email!
           </Typography>
+
           <Grid container spacing={2}>
-            <Grid item xs={6} sm={3}>
-              <Paper variant="elevation" elevation={24}>
-                <Typography align="center" variant="button">
-                  Upload Attachments:{" "}
+            <Grid item md={6} sm={6}>
+              <Card>
+                <Typography className={classes.attachmentsText}>
+                  <p style={{ marginTop: "10px" }}>Upload Attachments: </p>
                 </Typography>
-              </Paper>
+                <Grid item md={6} sm={6}>
+                  <FileUploader fileType="image/*, application/pdf" />
+                </Grid>
+              </Card>
             </Grid>
-            <Grid item xs={6} sm={3}>
-              <FileUploader fileType="image/*, application/pdf" />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <Paper variant="elevation" elevation={24}>
-                <Typography align="center" variant="button">
+
+            <Grid item md={6} sm={4}>
+              <Card>
+                <Typography className={classes.csvFileText}>
                   Upload contacts CSV file:{" "}
                   <Button
                     style={{
@@ -172,10 +184,11 @@ export default function Email() {
                   </Button>{" "}
                   to download sample csv file
                 </Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <FileUploader fileType=".csv" />
+
+                <Grid item md={6} sm={4}>
+                  <FileUploader fileType=".csv" />
+                </Grid>
+              </Card>
             </Grid>
           </Grid>
           <form className={classes.form} noValidate>
