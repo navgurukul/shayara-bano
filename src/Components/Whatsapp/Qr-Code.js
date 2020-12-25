@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Button from "@material-ui/core/Button";
 import Skeleton from "@material-ui/lab/Skeleton";
 import styles from "./qrcode.module.css";
-import qr from "/home/saquib/Desktop/Projects/NG/email-fe/qr.png";
+// import qr from "/home/saquib/Desktop/Projects/NG/email-fe/qr.png";
 
 const QrCode = () => {
   const [showQR, setShowQR] = useState(false);
@@ -15,12 +15,12 @@ const QrCode = () => {
   if (showQR) {
     toDisplay = (
       <>
-        <img
+        {/* <img
           src={qr}
-          // src="https://qrcode.merakilearn.org/qr.png"
+          src="https://qrcode.merakilearn.org/qr.png"
           alt="QR Code"
           className={styles.img}
-        />
+        /> */}
         <br />
         <div className={styles.button}>
           <Button type="submit" variant="contained" color="secondary">

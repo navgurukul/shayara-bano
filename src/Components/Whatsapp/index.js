@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-
 import Avatar from "@material-ui/core/Avatar";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
@@ -10,6 +9,7 @@ import Paper from "@material-ui/core/Paper";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
+import Card from "@material-ui/core/Card";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import Typography from "@material-ui/core/Typography";
 import axios from "axios";
@@ -45,7 +45,17 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
+    marginTop: "60px",
   },
+
+  AttachmentsText: {
+    backgroundColor: "slategrey",
+  },
+
+  csvfile: {
+    backgroundColor: "slategrey",
+  },
+
   form: {
     width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(3),
@@ -152,9 +162,21 @@ export default function Whatsapp() {
           <br />
 
           <Grid container spacing={2}>
-            <Grid item xs={4} sm={4}>
-              <Paper variant="elevation" elevation={24}>
-                <Typography align="center" variant="button">
+            <Grid item md={6} sm={6}>
+              <Card>
+                <Typography className={classes.AttachmentsText}>
+                  <p style={{ marginTop: "10px" }}>Upload Attachments: </p>
+                </Typography>
+
+                <Grid item xs={6} sm={6}>
+                  <FileUploader fileType="image/*, application/pdf" />
+                </Grid>
+              </Card>
+            </Grid>
+
+            <Grid item md={6} sm={4}>
+              <Card>
+                <Typography className={classes.csvfile}>
                   Upload contacts CSV file:{" "}
                   <Button
                     style={{
@@ -168,35 +190,23 @@ export default function Whatsapp() {
                   </Button>{" "}
                   to download sample csv file
                 </Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs={4} sm={4}>
-              <FileUploader fileType=".csv" />
-            </Grid>
-            <Grid item xs={4} sm={3}>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-                onClick={contactsAdder}
-              >
-                Add Contacts
-              </Button>
-            </Grid>
-
-            <Grid item xs={6} sm={6}>
-              <Paper variant="elevation" elevation={24}>
-                <Typography align="center" variant="button">
-                  Upload Attachments:{" "}
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs={6} sm={6}>
-              <FileUploader fileType="image/*, application/pdf" />
+                <Grid item xs={6} sm={4}>
+                  <FileUploader fileType=".csv" />
+                </Grid>
+              </Card>
             </Grid>
           </Grid>
+
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+            onClick={contactsAdder}
+          >
+            Add Contacts
+          </Button>
 
           <form className={classes.form} noValidate>
             <Grid container spacing={2}>

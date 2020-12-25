@@ -58,16 +58,17 @@ export default class FilesUploadComponent extends Component {
                 onChange={this.onFileChange}
                 multiple
               />
-            </div>
-            <div className="form-group">
-              <button className="btn btn-primary" type="submit">
+               <button className="btn btn-primary" type="submit">
                 Upload
               </button>
             </div>
-          </form>
+           </form>
         </div>
         {this.state.snackbarStatus ? <UploadSuccessSnackbar /> : null}
       </div>
     );
   }
 }
+
+
+

@@ -49,7 +49,7 @@ export default class FilesUploadComponent extends Component {
     return (
       <div className="container">
         <div className="row">
-          <form onSubmit={this.onSubmit}>
+          <form onSubmit={this.onSubmit} s>
             <div className="form-group">
               <input
                 type="file"
@@ -58,8 +58,6 @@ export default class FilesUploadComponent extends Component {
                 onChange={this.onFileChange}
                 multiple
               />
-            </div>
-            <div className="form-group">
               <button className="btn btn-primary" type="submit">
                 Upload
               </button>
