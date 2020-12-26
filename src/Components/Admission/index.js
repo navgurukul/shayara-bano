@@ -73,6 +73,7 @@ export default function Admission() {
   const classes = useStyles();
 
   const [values, setValues] = useState({
+    senderName: "",
     senderEmail: "",
     senderPassword: "",
     campus: "",
@@ -82,6 +83,8 @@ export default function Admission() {
     date: "",
     langType: "",
   });
+
+ 
 
   const changeHandler = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -152,7 +155,19 @@ export default function Admission() {
           </Typography>
           <form className={classes.form} noValidate>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={4}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="senderName"
+                  label="Email  Sender Name"
+                  name="senderName"
+                  autoComplete="off"
+                  onChange={changeHandler}
+                />
+              </Grid>
+              <Grid item xs={12} sm={4}>
                 <TextField
                   variant="outlined"
                   required
@@ -164,7 +179,7 @@ export default function Admission() {
                   onChange={changeHandler}
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={4}>
                 <TextField
                   variant="outlined"
                   required
