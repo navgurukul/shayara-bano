@@ -83,6 +83,7 @@ export default function Email() {
     password: "",
     mailBody: "",
     mailSubject: "",
+    cc: "",
   });
 
   const changeHandler = (e) => {
