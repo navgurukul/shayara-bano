@@ -155,17 +155,23 @@ export default function Admission() {
           </Typography>
           <form className={classes.form} noValidate>
             <Grid container spacing={2}>
-            <Grid item xs={12} sm={4}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="senderName"
-                  label="Email  Sender Name"
-                  name="senderName"
-                  autoComplete="off"
-                  onChange={changeHandler}
-                />
+              <Grid item xs={12} sm={4}>
+                <FormControl fullWidth variant="outlined">
+                  <InputLabel id="demo-simple-select-outlined-label">
+                    Email Sender Name
+                  </InputLabel>
+                  <Select
+                    value={values.senderName}
+                    onChange={changeHandler}
+                    label="senderName"
+                    name="senderName"
+                  >
+                    <MenuItem value={"Alisha"}>Alisha</MenuItem>
+                    <MenuItem value={"Rahit"}>Rahit</MenuItem>
+                    <MenuItem value={"Nilam"}>Nilam</MenuItem>
+                    <MenuItem value={"Shahnaaz"}>Shahnaaz</MenuItem>
+                  </Select>
+                </FormControl>
               </Grid>
               <Grid item xs={12} sm={4}>
                 <TextField
