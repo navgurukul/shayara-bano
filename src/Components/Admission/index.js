@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import Avatar from "@material-ui/core/Avatar";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
@@ -46,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
-    marginTop:"60px"
+    marginTop: "60px",
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -74,7 +73,13 @@ export default function Admission() {
 
   const [values, setValues] = useState({
     senderName: "",
-    senderEmail: "",
+    senderEmail: {
+      Cheshta: "cheshta@navgurukul.org",
+      Shahnaaz: "shahnaaz@navgurukul.org",
+      Nilam: "nilam@navgurukul.org",
+      Kitty: "kitty@navgurukul.org",
+      Rahit: "rahit@navgurukul.org",
+    },
     senderPassword: "",
     campus: "",
     name: "",
@@ -82,11 +87,16 @@ export default function Admission() {
     receiverEmail: "",
     date: "",
     langType: "",
+    email: "",
   });
-
- 
+  const [email, setEmail] = useState("");
 
   const changeHandler = (e) => {
+    if (e.target.name === "senderName") {
+   
+      setEmail(e.target.value);
+    }
+
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
@@ -121,8 +131,9 @@ export default function Admission() {
         console.log(err);
       });
   };
-
+  
   return (
+    <div>
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="md">
         <CssBaseline />
@@ -155,17 +166,24 @@ export default function Admission() {
           </Typography>
           <form className={classes.form} noValidate>
             <Grid container spacing={2}>
-            <Grid item xs={12} sm={4}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="senderName"
-                  label="Email  Sender Name"
-                  name="senderName"
-                  autoComplete="off"
-                  onChange={changeHandler}
-                />
+              <Grid item xs={12} sm={4}>
+                <FormControl fullWidth variant="outlined">
+                  <InputLabel id="demo-simple-select-outlined-label">
+                    Email Sender Name
+                  </InputLabel>
+                  <Select
+                    value={values.senderName}
+                    onChange={changeHandler}
+                    label="senderName"
+                    name="senderName"
+                  >
+                    <MenuItem value={"Cheshta"}>Cheshta</MenuItem>
+                    <MenuItem value={"Shahnaaz"}>Shahnaaz</MenuItem>
+                    <MenuItem value={"Nilam"}>Nilam</MenuItem>
+                    <MenuItem value={"Kitty"}>Kitty</MenuItem>
+                    <MenuItem value={"Rahit"}>Rahit</MenuItem>
+                  </Select>
+                </FormControl>
               </Grid>
               <Grid item xs={12} sm={4}>
                 <TextField
@@ -173,7 +191,9 @@ export default function Admission() {
                   required
                   fullWidth
                   id="senderEmail"
-                  label="Email Address"
+                  // label="Email Address"
+                  placeholder="Email Address"
+                  value={values.senderEmail[email]}
                   name="senderEmail"
                   autoComplete="off"
                   onChange={changeHandler}
@@ -305,5 +325,6 @@ export default function Admission() {
         </Box>
       </Container>
     </ThemeProvider>
+    </div>
   );
 }
