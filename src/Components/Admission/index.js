@@ -56,6 +56,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const emailMappedtoName = {
+  Cheshta: "cheshta@navgurukul.org",
+  Shahnaaz: "shahnaaz@navgurukul.org",
+  Nilam: "nilam@navgurukul.org",
+  Kitty: "kitty@navgurukul.org",
+  Rahit: "rahit@navgurukul.org",
+};
+
 export default function Admission() {
   const theme = createMuiTheme({
     palette: {
@@ -73,13 +81,7 @@ export default function Admission() {
 
   const [values, setValues] = useState({
     senderName: "",
-    senderEmail: {
-      Cheshta: "cheshta@navgurukul.org",
-      Shahnaaz: "shahnaaz@navgurukul.org",
-      Nilam: "nilam@navgurukul.org",
-      Kitty: "kitty@navgurukul.org",
-      Rahit: "rahit@navgurukul.org",
-    },
+    senderEmail: "",
     senderPassword: "",
     campus: "",
     name: "",
@@ -87,17 +89,18 @@ export default function Admission() {
     receiverEmail: "",
     date: "",
     langType: "",
-    email: "",
   });
-  const [email, setEmail] = useState("");
 
   const changeHandler = (e) => {
     if (e.target.name === "senderName") {
-   
-      setEmail(e.target.value);
+      setValues({
+        ...values,
+        [e.target.name]: e.target.value,
+        ["senderEmail"]: emailMappedtoName[e.target.value],
+      });
+    } else {
+      setValues({ ...values, [e.target.name]: e.target.value });
     }
-
-    setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   const clearUploads = () => {
@@ -131,200 +134,200 @@ export default function Admission() {
         console.log(err);
       });
   };
-  
+
   return (
     <div>
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="md">
-        <CssBaseline />
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <MailOutlineIcon />
-          </Avatar>
-          <Typography>
-            In order to use this tool you need to turn on this feature. <br />
-            <Link
-              href="https://www.google.com/settings/security/lesssecureapps"
-              target="_blank"
-              // color="white"
-              style={{
-                textDecoration: "none",
-                fontWeight: 700,
-                backgroundColor: "#ef9a9a33",
-              }}
+      <ThemeProvider theme={theme}>
+        <Container component="main" maxWidth="md">
+          <CssBaseline />
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+              <MailOutlineIcon />
+            </Avatar>
+            <Typography>
+              In order to use this tool you need to turn on this feature. <br />
+              <Link
+                href="https://www.google.com/settings/security/lesssecureapps"
+                target="_blank"
+                // color="white"
+                style={{
+                  textDecoration: "none",
+                  fontWeight: 700,
+                  backgroundColor: "#ef9a9a33",
+                }}
+              >
+                Click Here
+              </Link>{" "}
+              to turn on Less Secure Apps
+            </Typography>
+            <Typography
+              style={{ marginBottom: "30px" }}
+              component="h1"
+              variant="h5"
             >
-              Click Here
-            </Link>{" "}
-            to turn on Less Secure Apps
-          </Typography>
-          <Typography
-            style={{ marginBottom: "30px" }}
-            component="h1"
-            variant="h5"
-          >
-            Write an email!
-          </Typography>
-          <form className={classes.form} noValidate>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={4}>
-                <FormControl fullWidth variant="outlined">
-                  <InputLabel id="demo-simple-select-outlined-label">
-                    Email Sender Name
-                  </InputLabel>
-                  <Select
-                    value={values.senderName}
+              Write an email!
+            </Typography>
+            <form className={classes.form} noValidate>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={4}>
+                  <FormControl fullWidth variant="outlined">
+                    <InputLabel id="demo-simple-select-outlined-label">
+                      Email Sender Name
+                    </InputLabel>
+                    <Select
+                      value={values.senderName}
+                      onChange={changeHandler}
+                      label="senderName"
+                      name="senderName"
+                    >
+                      <MenuItem value={"Cheshta"}>Cheshta</MenuItem>
+                      <MenuItem value={"Shahnaaz"}>Shahnaaz</MenuItem>
+                      <MenuItem value={"Nilam"}>Nilam</MenuItem>
+                      <MenuItem value={"Kitty"}>Kitty</MenuItem>
+                      <MenuItem value={"Rahit"}>Rahit</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="senderEmail"
+                    // label="Email Address"
+                    placeholder="Email Address"
+                    value={values.senderEmail}
+                    name="senderEmail"
+                    autoComplete="off"
                     onChange={changeHandler}
-                    label="senderName"
-                    name="senderName"
-                  >
-                    <MenuItem value={"Cheshta"}>Cheshta</MenuItem>
-                    <MenuItem value={"Shahnaaz"}>Shahnaaz</MenuItem>
-                    <MenuItem value={"Nilam"}>Nilam</MenuItem>
-                    <MenuItem value={"Kitty"}>Kitty</MenuItem>
-                    <MenuItem value={"Rahit"}>Rahit</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={12} sm={4}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="senderEmail"
-                  // label="Email Address"
-                  placeholder="Email Address"
-                  value={values.senderEmail[email]}
-                  name="senderEmail"
-                  autoComplete="off"
-                  onChange={changeHandler}
-                />
-              </Grid>
-              <Grid item xs={12} sm={4}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  name="senderPassword"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
-                  onChange={changeHandler}
-                />
-              </Grid>
-              <Grid item xs={12} sm={4}>
-                <FormControl fullWidth variant="outlined">
-                  <InputLabel id="demo-simple-select-outlined-label">
-                    Campus
-                  </InputLabel>
-                  <Select
-                    value={values.campus}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    name="senderPassword"
+                    label="Password"
+                    type="password"
+                    id="password"
+                    autoComplete="current-password"
                     onChange={changeHandler}
-                    label="Campus"
-                    name="campus"
-                  >
-                    <MenuItem value={"Pune"}>Pune</MenuItem>
-                    <MenuItem value={"Bangalore"}>Bangalore</MenuItem>
-                    <MenuItem value={"Dharamshala"}>Dharamshala</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={12} sm={4}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  name="date"
-                  label="Date"
-                  type="text"
-                  id="subject"
-                  onChange={changeHandler}
-                />
-              </Grid>
-              <Grid item xs={12} sm={4}>
-                <FormControl fullWidth variant="outlined">
-                  <InputLabel id="demo-simple-select-outlined-label">
-                    Language Type
-                  </InputLabel>
-                  <Select
-                    value={values.langType}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <FormControl fullWidth variant="outlined">
+                    <InputLabel id="demo-simple-select-outlined-label">
+                      Campus
+                    </InputLabel>
+                    <Select
+                      value={values.campus}
+                      onChange={changeHandler}
+                      label="Campus"
+                      name="campus"
+                    >
+                      <MenuItem value={"Pune"}>Pune</MenuItem>
+                      <MenuItem value={"Bangalore"}>Bangalore</MenuItem>
+                      <MenuItem value={"Dharamshala"}>Dharamshala</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    name="date"
+                    label="Date"
+                    type="text"
+                    id="subject"
                     onChange={changeHandler}
-                    label="Language Type"
-                    name="langType"
-                  >
-                    <MenuItem value={"onlyEnglish"}>Only English</MenuItem>
-                    <MenuItem value={"both"}>Both</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
+                  />
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <FormControl fullWidth variant="outlined">
+                    <InputLabel id="demo-simple-select-outlined-label">
+                      Language Type
+                    </InputLabel>
+                    <Select
+                      value={values.langType}
+                      onChange={changeHandler}
+                      label="Language Type"
+                      name="langType"
+                    >
+                      <MenuItem value={"onlyEnglish"}>Only English</MenuItem>
+                      <MenuItem value={"both"}>Both</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
 
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  label="Receiver's Email Address"
-                  name="receiverEmail"
-                  autoComplete="off"
-                  onChange={changeHandler}
-                />
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    label="Receiver's Email Address"
+                    name="receiverEmail"
+                    autoComplete="off"
+                    onChange={changeHandler}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    label="Receiver's Name"
+                    name="name"
+                    autoComplete="off"
+                    onChange={changeHandler}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={12}>
+                  <TextField
+                    variant="outlined"
+                    fullWidth
+                    label="CC"
+                    placeholder="Comma separated emails (xyz@gmail.com, abc@gmail.com)"
+                    name="cc"
+                    autoComplete="off"
+                    onChange={changeHandler}
+                  />
+                </Grid>
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  label="Receiver's Name"
-                  name="name"
-                  autoComplete="off"
-                  onChange={changeHandler}
-                />
-              </Grid>
-              <Grid item xs={12} sm={12}>
-                <TextField
-                  variant="outlined"
-                  fullWidth
-                  label="CC"
-                  placeholder="Comma separated emails (xyz@gmail.com, abc@gmail.com)"
-                  name="cc"
-                  autoComplete="off"
-                  onChange={changeHandler}
-                />
-              </Grid>
-            </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-              onClick={submitHandler}
-            >
-              Send
-            </Button>
-          </form>
-
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
-                color="secondary"
-                onClick={clearUploads}
+                color="primary"
+                className={classes.submit}
+                onClick={submitHandler}
               >
-                <Typography align="center" variant="button">
-                  Clear all uploads
-                </Typography>{" "}
+                Send
               </Button>
+            </form>
+
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="secondary"
+                  onClick={clearUploads}
+                >
+                  <Typography align="center" variant="button">
+                    Clear all uploads
+                  </Typography>{" "}
+                </Button>
+              </Grid>
             </Grid>
-          </Grid>
-        </div>
-        <Box mt={5}>
-          <Copyright />
-        </Box>
-      </Container>
-    </ThemeProvider>
+          </div>
+          <Box mt={5}>
+            <Copyright />
+          </Box>
+        </Container>
+      </ThemeProvider>
     </div>
   );
 }
