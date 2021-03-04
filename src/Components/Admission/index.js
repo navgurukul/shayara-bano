@@ -57,7 +57,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const emailMappedtoName = {
-  // Cheshta: "cheshta@navgurukul.org",
   Nitesh: "nitesh@navgurukul.org",
   Shahnaaz: "shahnaaz@navgurukul.org",
   Nilam: "nilam@navgurukul.org",
