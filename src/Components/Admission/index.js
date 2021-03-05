@@ -58,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
 
 const emailMappedtoName = {
   Nitesh: "nitesh@navgurukul.org",
+  Aman: "aman18@navgurukul.org",
   Shahnaaz: "shahnaaz@navgurukul.org",
   Nilam: "nilam@navgurukul.org",
   Kitty: "kitty@navgurukul.org",
@@ -181,6 +182,7 @@ export default function Admission() {
                       name="senderName"
                     >
                       <MenuItem value={"Nitesh"}>Nitesh</MenuItem>
+                      <MenuItem value={"Aman"}>Aman</MenuItem>
                       <MenuItem value={"Shahnaaz"}>Shahnaaz</MenuItem>
                       <MenuItem value={"Nilam"}>Nilam</MenuItem>
                       <MenuItem value={"Kitty"}>Kitty</MenuItem>
