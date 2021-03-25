@@ -230,6 +230,7 @@ export default function Admission() {
                     >
                       <MenuItem value={"Pune"}>Pune</MenuItem>
                       <MenuItem value={"Bangalore"}>Bangalore</MenuItem>
+                      <MenuItem value={"Sarjapura"}>Sarjapura</MenuItem>
                       <MenuItem value={"Dharamshala"}>Dharamshala</MenuItem>
                     </Select>
                   </FormControl>
