@@ -62,7 +62,7 @@ const emailMappedtoName = {
   Shahnaaz: "shahnaaz@navgurukul.org",
   Nilam: "nilam@navgurukul.org",
   Kitty: "kitty@navgurukul.org",
-  Rahit: "rahit@navgurukul.org",
+  Rahit: "rahit.roy@navgurukul.org",
 };
 
 export default function Admission() {
