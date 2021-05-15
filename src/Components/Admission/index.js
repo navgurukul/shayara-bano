@@ -58,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
 
 const emailMappedtoName = {
   Nitesh: "nitesh@navgurukul.org",
+  Rose: "rose@navgurukul.org",
   Aman: "aman18@navgurukul.org",
   Shahnaaz: "shahnaaz@navgurukul.org",
   Nilam: "nilam@navgurukul.org",
@@ -182,6 +183,7 @@ export default function Admission() {
                       name="senderName"
                     >
                       <MenuItem value={"Nitesh"}>Nitesh</MenuItem>
+                      <MenuItem value={"Rose"}>Rose Joseph</MenuItem>
                       <MenuItem value={"Aman"}>Aman</MenuItem>
                       <MenuItem value={"Shahnaaz"}>Shahnaaz</MenuItem>
                       <MenuItem value={"Nilam"}>Nilam</MenuItem>
@@ -230,6 +232,7 @@ export default function Admission() {
                     >
                       <MenuItem value={"Pune"}>Pune</MenuItem>
                       <MenuItem value={"Bangalore"}>Bangalore</MenuItem>
+                      <MenuItem value={"Sarjapura"}>Sarjapura</MenuItem>
                       <MenuItem value={"Dharamshala"}>Dharamshala</MenuItem>
                     </Select>
                   </FormControl>
